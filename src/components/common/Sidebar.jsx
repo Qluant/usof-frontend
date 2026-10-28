@@ -39,57 +39,59 @@ export default function Sidebar({ isCollapsed, onToggle }) {
           <ChevronRight size={18} />
         </button>
 
-        <NavLink
-          to="/"
-          className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-          style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-          title="Discussions & Topics"
-          end
-        >
-          <Swords size={18} />
-        </NavLink>
+        <div className="sidebar-collapsed-icons">
+          <NavLink
+            to="/"
+            className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+            style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
+            title="Discussions & Topics"
+            end
+          >
+            <Swords size={18} />
+          </NavLink>
 
-        <NavLink
-          to="/categories"
-          className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-          style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-          title="Games & Genres"
-        >
-          <Gamepad2 size={18} />
-        </NavLink>
+          <NavLink
+            to="/categories"
+            className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+            style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
+            title="Games & Genres"
+          >
+            <Gamepad2 size={18} />
+          </NavLink>
 
-        {isAuthenticated && (
-          <>
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-              style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-              title="Saved Topics"
-            >
-              <Bookmark size={18} />
-            </NavLink>
-
-            <NavLink
-              to={`/profile/${user?.id}`}
-              className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-              style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-              title="Player Profile"
-            >
-              <User size={18} />
-            </NavLink>
-
-            {user?.role === 'admin' && (
+          {isAuthenticated && (
+            <>
               <NavLink
-                to="/admin"
+                to="/favorites"
                 className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-                title="Guildmaster Panel"
+                title="Saved Topics"
               >
-                <Shield size={18} color="var(--warning)" />
+                <Bookmark size={18} />
               </NavLink>
-            )}
-          </>
-        )}
+
+              <NavLink
+                to={`/profile/${user?.id}`}
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
+                title="Player Profile"
+              >
+                <User size={18} />
+              </NavLink>
+
+              {user?.role === 'admin' && (
+                <NavLink
+                  to="/admin"
+                  className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                  style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
+                  title="Guildmaster Panel"
+                >
+                  <Shield size={18} color="var(--warning)" />
+                </NavLink>
+              )}
+            </>
+          )}
+        </div>
       </aside>
     );
   }
@@ -110,79 +112,79 @@ export default function Sidebar({ isCollapsed, onToggle }) {
         </button>
       </div>
 
-      <NavLink
-        to="/"
-        className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-        end
-      >
-        <Swords size={18} />
-        <span>Discussions & Topics</span>
-      </NavLink>
+      <div className="sidebar-nav-group">
+        <NavLink
+          to="/"
+          className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+          end
+        >
+          <Swords size={18} />
+          <span>Discussions & Topics</span>
+        </NavLink>
 
-      <NavLink
-        to="/categories"
-        className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-      >
-        <Gamepad2 size={18} />
-        <span>Games & Genres</span>
-      </NavLink>
+        <NavLink
+          to="/categories"
+          className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+        >
+          <Gamepad2 size={18} />
+          <span>Games & Genres</span>
+        </NavLink>
+
+        {isAuthenticated && (
+          <>
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+            >
+              <Bookmark size={18} />
+              <span>Saved Topics</span>
+            </NavLink>
+
+            <NavLink
+              to={`/profile/${user?.id}`}
+              className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+            >
+              <User size={18} />
+              <span>Player Profile</span>
+            </NavLink>
+
+            {user?.role === 'admin' && (
+              <NavLink
+                to="/admin"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+              >
+                <Shield size={18} color="var(--warning)" />
+                <span>Guildmaster Panel</span>
+              </NavLink>
+            )}
+          </>
+        )}
+      </div>
 
       <div className="sidebar-section-title">
         <Flame size={14} color="var(--primary)" />
         <span>TOP 7 CATEGORIES</span>
       </div>
 
-      {topCategories.map((cat) => {
-        const isSelected = String(filters.categoryId) === String(cat.id);
-        return (
-          <div
-            key={cat.id}
-            onClick={() => handleCategoryClick(cat.id)}
-            className={`sidebar-category-item ${isSelected ? 'active' : ''}`}
-          >
-            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {cat.title}
-            </span>
-            <span className="sidebar-category-count">
-              {cat.posts_count || 0}
-            </span>
-          </div>
-        );
-      })}
-
-      {isAuthenticated && (
-        <>
-          <div className="sidebar-section-title" style={{ marginTop: '0.5rem' }}>
-            <span>PLAYER SHORTCUTS</span>
-          </div>
-
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-          >
-            <Bookmark size={18} />
-            <span>Saved Topics</span>
-          </NavLink>
-
-          <NavLink
-            to={`/profile/${user?.id}`}
-            className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-          >
-            <User size={18} />
-            <span>Player Profile</span>
-          </NavLink>
-
-          {user?.role === 'admin' && (
-            <NavLink
-              to="/admin"
-              className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+      <div className="sidebar-categories-group">
+        {topCategories.map((cat) => {
+          const isSelected = String(filters.categoryId) === String(cat.id);
+          return (
+            <div
+              key={cat.id}
+              onClick={() => handleCategoryClick(cat.id)}
+              className={`sidebar-category-item ${isSelected ? 'active' : ''}`}
             >
-              <Shield size={18} color="var(--warning)" />
-              <span>Guildmaster Panel</span>
-            </NavLink>
-          )}
-        </>
-      )}
+              <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                {cat.title}
+              </span>
+              <span className="sidebar-category-count">
+                {cat.posts_count || 0}
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </aside>
   );
 }

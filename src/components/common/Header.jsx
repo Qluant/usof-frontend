@@ -45,7 +45,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-content">
-        <Link to="/" className="logo">
+        <Link to="/" className="logo mobile-hide">
           <img
             src="/logo.png"
             alt="GamerEars"
@@ -73,9 +73,9 @@ export default function Header() {
         <div className="header-actions">
           {isAuthenticated ? (
             <>
-              <Link to="/posts/new" className="btn btn-primary btn-sm">
+              <Link to="/posts/new" className="btn btn-primary btn-sm header-new-topic-btn mobile-hide">
                 <PlusCircle size={16} />
-                <span>New Guide</span>
+                <span>New Topic</span>
               </Link>
 
               <Link
@@ -92,7 +92,7 @@ export default function Header() {
                     e.target.src = 'https://ui-avatars.com/api/?name=' + (user?.login || 'Player') + '&background=6366f1&color=fff';
                   }}
                 />
-                <div style={{ display: 'flex', flexDirection: 'column', minWidth: '70px' }}>
+                <div className="header-user-text mobile-hide" style={{ display: 'flex', flexDirection: 'column', minWidth: '70px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                     <span style={{ fontWeight: 700, fontSize: '0.86rem', color: 'var(--text-white)', lineHeight: 1.2 }}>
                       {user?.login}
@@ -120,12 +120,12 @@ export default function Header() {
               </Link>
 
               {user?.role === 'admin' && (
-                <Link to="/admin" className="btn btn-outline btn-sm" title="Admin Panel">
+                <Link to="/admin" className="btn btn-outline btn-sm mobile-hide" title="Admin Panel">
                   <Shield size={16} color="var(--warning)" />
                 </Link>
               )}
 
-              <button onClick={handleLogout} className="btn btn-outline btn-sm" title="Sign out">
+              <button onClick={handleLogout} className="btn btn-outline btn-sm header-logout-btn" title="Sign out">
                 <LogOut size={16} />
               </button>
             </>

@@ -53,7 +53,7 @@ export default function HomePage() {
         {isAuthenticated && (
           <Link to="/posts/new" className="btn btn-primary">
             <PlusCircle size={18} />
-            <span>New Discussion</span>
+            <span>New Topic</span>
           </Link>
         )}
       </div>

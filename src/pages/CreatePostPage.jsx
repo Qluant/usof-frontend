@@ -65,7 +65,7 @@ export default function CreatePostPage() {
   return (
     <div className="content-area" style={{ maxWidth: '850px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-        <h1 className="page-title" style={{ margin: 0 }}>Start a Gaming Discussion / Guide</h1>
+        <h1 className="page-title" style={{ margin: 0 }}>Create New Topic</h1>
         <div style={{ display: 'flex', gap: '0.4rem', background: 'var(--bg-input)', padding: '0.25rem', borderRadius: '8px' }}>
           <button
             type="button"
@@ -184,7 +184,7 @@ export default function CreatePostPage() {
             </button>
             <button type="submit" disabled={isSubmitting} className="btn btn-primary">
               <Send size={16} />
-              <span>{isSubmitting ? 'Publishing...' : 'Publish Discussion'}</span>
+              <span>{isSubmitting ? 'Publishing...' : 'Publish Topic'}</span>
             </button>
           </div>
         </form>
