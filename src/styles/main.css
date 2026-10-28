@@ -649,14 +649,33 @@
 }
 
 @media (max-width: 768px) {
-  .main-layout {
-    grid-template-columns: 1fr;
+  .main-layout,
+  .main-layout.sidebar-collapsed {
+    grid-template-columns: 1fr !important;
     padding: 1rem;
     gap: 1rem;
   }
 
-  .sidebar {
+  .sidebar,
+  .sidebar.collapsed {
+    display: none !important;
+  }
+
+  .search-bar {
     display: none;
+  }
+
+  .user-profile-pill > div {
+    display: none;
+  }
+
+  .user-profile-pill {
+    padding: 0.3rem;
+    min-width: unset;
+  }
+
+  .tag-badge {
+    white-space: nowrap;
   }
 
   .post-card {
@@ -738,17 +757,17 @@
     gap: 0.5rem;
   }
 
-  .logo span {
-    font-size: 1.1rem;
-  }
-
-  .header-content .logo img {
-    width: 72px;
-    height: 72px;
-  }
-
-  .search-bar {
+  .logo > span {
     display: none;
+  }
+
+  .logo img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .btn {
+    white-space: nowrap;
   }
 
   .header-actions .btn span {
