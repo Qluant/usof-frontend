@@ -82,13 +82,13 @@ export default function PostDetailPage() {
       <div className="card hud-corner" style={{ marginBottom: '1.5rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '1rem' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', marginBottom: '0.4rem' }}>
               {post.status === 'active' ? (
-                <span className="beacon-dot" title="Active Discussion" />
+                <span className="beacon-dot" title="Active Discussion" style={{ marginTop: '0.65rem', flexShrink: 0 }} />
               ) : (
-                <span className="badge badge-inactive">Archived</span>
+                <span className="badge badge-inactive" style={{ flexShrink: 0 }}>Archived</span>
               )}
-              <h1 style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-white)', letterSpacing: '-0.3px' }}>
+              <h1 style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-white)', letterSpacing: '-0.3px', margin: 0, lineHeight: 1.25 }}>
                 {post.title}
               </h1>
             </div>
