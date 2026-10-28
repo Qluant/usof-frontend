@@ -1,0 +1,21 @@
+import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+export default function ProtectedRoute({ requireAdmin = false, children }) {
+  const { user, isAuthenticated, isLoading } = useSelector((state) => state.auth);
+
+  if (isLoading) {
+    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (requireAdmin && user?.role !== 'admin') {
+    return <Navigate to="/" replace />;
+  }
+
+  return children ? children : <Outlet />;
+}
