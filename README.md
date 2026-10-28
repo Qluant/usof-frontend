@@ -1,6 +1,6 @@
 # GamerEars Frontend
 
-Single Page Application (SPA) built with React 18, Vite, and Redux Toolkit for **GamerEars** — an interactive gaming community discussion forum and guide exchange.
+Single Page Application (SPA) built with React 18, Vite, and Redux Toolkit for **GamerEars** - an interactive gaming community discussion forum and guide exchange.
 
 ## Features
 
@@ -10,9 +10,9 @@ Single Page Application (SPA) built with React 18, Vite, and Redux Toolkit for *
 - **Interactive Topics**: Post creation and editing with Live Markdown Preview tabs, tags, and category multi-selection.
 - **Discussion & Comments**: Vote on posts/comments (likes & dislikes), nested inline replies (`@username`), inline comment editing for authors, and status archiving.
 - **Player Profiles & Ranks**: Custom avatar uploads, user post lists, and dynamic Gamer Rank tiers based on accumulated XP:
-  - **Novice Scout** (0–19 XP)
-  - **Dungeon Crawler** (20–49 XP)
-  - **Raid Veteran** (50–99 XP)
+  - **Novice Scout** (0-19 XP)
+  - **Dungeon Crawler** (20-49 XP)
+  - **Raid Veteran** (50-99 XP)
   - **Legendary Guildmaster** (100+ XP)
 - **Admin Panel**: Dedicated administration interface for managing user roles and creating/updating/deleting game categories.
 - **Sidebar**: Smooth expandable/collapsible sidebar drawer with quick navigation and top game categories ranked by activity.

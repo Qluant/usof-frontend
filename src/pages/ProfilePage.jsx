@@ -103,22 +103,34 @@ export default function ProfilePage() {
   return (
     <div className="profile-container">
       <div className="card" style={{ display: 'flex', gap: '2rem', alignItems: 'center', flexWrap: 'wrap', marginBottom: '2rem' }}>
-        <div style={{ position: 'relative' }}>
-          {avatarSrc ? (
-            <img
-              src={avatarSrc}
-              alt={selectedUser.login}
-              className="avatar-img-lg"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling && (e.target.nextSibling.style.display = 'flex');
-              }}
-            />
-          ) : (
-            <div style={{ width: '96px', height: '96px', borderRadius: '50%', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.5rem', fontWeight: 800, color: '#fff', border: '3px solid var(--primary)' }}>
-              {selectedUser.login.charAt(0).toUpperCase()}
-            </div>
-          )}
+        <div style={{ position: 'relative', width: '96px', height: '96px', flexShrink: 0 }}>
+          <img
+            src={avatarSrc || ''}
+            alt={selectedUser.login}
+            className="avatar-img-lg"
+            style={{ display: avatarSrc ? 'block' : 'none' }}
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextElementSibling.style.display = 'flex';
+            }}
+          />
+          <div
+            style={{
+              width: '96px',
+              height: '96px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+              display: avatarSrc ? 'none' : 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '2.5rem',
+              fontWeight: 800,
+              color: '#fff',
+              border: '3px solid var(--primary)'
+            }}
+          >
+            {selectedUser.login.charAt(0).toUpperCase()}
+          </div>
           {isOwnProfile && (
             <button
               type="button"

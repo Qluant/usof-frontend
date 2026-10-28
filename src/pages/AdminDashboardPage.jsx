@@ -212,7 +212,7 @@ export default function AdminDashboardPage() {
               <Users size={24} />
             </div>
             <div>
-              <div className="stat-value">{stats?.usersCount ?? users.length}</div>
+              <div className="stat-value">{stats?.users ?? users.length}</div>
               <div className="stat-label">Total Players</div>
             </div>
           </div>
@@ -222,7 +222,7 @@ export default function AdminDashboardPage() {
               <FileText size={24} />
             </div>
             <div>
-              <div className="stat-value">{stats?.postsCount ?? 0}</div>
+              <div className="stat-value">{stats?.posts ?? 0}</div>
               <div className="stat-label">Discussions & Guides</div>
             </div>
           </div>
@@ -232,7 +232,7 @@ export default function AdminDashboardPage() {
               <MessageSquare size={24} />
             </div>
             <div>
-              <div className="stat-value">{stats?.commentsCount ?? 0}</div>
+              <div className="stat-value">{stats?.comments ?? 0}</div>
               <div className="stat-label">Total Responses</div>
             </div>
           </div>
@@ -242,7 +242,7 @@ export default function AdminDashboardPage() {
               <FolderTree size={24} />
             </div>
             <div>
-              <div className="stat-value">{stats?.categoriesCount ?? categories.length}</div>
+              <div className="stat-value">{stats?.categories ?? categories.length}</div>
               <div className="stat-label">Game Genres</div>
             </div>
           </div>

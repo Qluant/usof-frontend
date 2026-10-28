@@ -246,3 +246,59 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;
   border: 1px solid rgba(184, 42, 76, 0.4);
 }
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-icon:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.btn-icon:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-icon-danger {
+  color: var(--danger);
+  background-color: var(--danger-light);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.btn-icon-danger:hover:not(:disabled) {
+  background-color: rgba(239, 68, 68, 0.25);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.table-select {
+  font-size: 0.82rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.table-select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.profile-container {
+  max-width: 860px;
+}
