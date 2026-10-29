@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Swords, Gamepad2, Bookmark, User, Shield, ChevronLeft, ChevronRight, Flame } from 'lucide-react';
+import { Swords, Gamepad2, Bookmark, User, Shield, ChevronLeft, ChevronRight, Flame, Users } from 'lucide-react';
 import { fetchCategories } from '../../store/slices/categoriesSlice';
 import { setFilter } from '../../store/slices/postsSlice';
 
@@ -57,6 +57,15 @@ export default function Sidebar({ isCollapsed, onToggle }) {
             title="Games & Genres"
           >
             <Gamepad2 size={18} />
+          </NavLink>
+
+          <NavLink
+            to="/users"
+            className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+            style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
+            title="All members"
+          >
+            <Users size={18} />
           </NavLink>
 
           {isAuthenticated && (
@@ -128,6 +137,14 @@ export default function Sidebar({ isCollapsed, onToggle }) {
         >
           <Gamepad2 size={18} />
           <span>Games & Genres</span>
+        </NavLink>
+
+        <NavLink
+          to="/users"
+          className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+        >
+          <Users size={18} />
+          <span>All members</span>
         </NavLink>
 
         {isAuthenticated && (

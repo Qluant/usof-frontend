@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { PlusCircle } from 'lucide-react';
+import { PlusCircle, Users } from 'lucide-react';
 import { fetchPosts, setPage } from '../store/slices/postsSlice';
 import { fetchCategories } from '../store/slices/categoriesSlice';
 import PostCard from '../components/posts/PostCard';
@@ -50,12 +50,18 @@ export default function HomePage() {
           </p>
         </div>
 
-        {isAuthenticated && (
-          <Link to="/posts/new" className="btn btn-primary">
-            <PlusCircle size={18} />
-            <span>New Topic</span>
+        <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          <Link to="/users" className="btn btn-outline">
+            <Users size={16} />
+            <span>All members</span>
           </Link>
-        )}
+          {isAuthenticated && (
+            <Link to="/posts/new" className="btn btn-primary">
+              <PlusCircle size={18} />
+              <span>New Topic</span>
+            </Link>
+          )}
+        </div>
       </div>
 
       <PostFilter />

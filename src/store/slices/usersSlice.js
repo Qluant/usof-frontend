@@ -2,6 +2,15 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { usersApi } from '../../api/users.api';
 import { updateCurrentUser } from './authSlice';
 
+export const fetchAllUsers = createAsyncThunk('users/fetchAllUsers', async (_, { rejectWithValue }) => {
+  try {
+    const res = await usersApi.getAll();
+    return res.data;
+  } catch (err) {
+    return rejectWithValue(err.message || 'Failed to fetch users');
+  }
+});
+
 export const fetchUserProfile = createAsyncThunk('users/fetchProfile', async (id, { rejectWithValue }) => {
   try {
     const res = await usersApi.getById(id);
@@ -46,6 +55,7 @@ export const fetchFavorites = createAsyncThunk('users/fetchFavorites', async (_,
 const usersSlice = createSlice({
   name: 'users',
   initialState: {
+    users: [],
     selectedUser: null,
     favorites: [],
     isLoading: false,
@@ -58,6 +68,18 @@ const usersSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchAllUsers.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllUsers.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.users = action.payload;
+      })
+      .addCase(fetchAllUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
       .addCase(fetchUserProfile.pending, (state) => {
         state.isLoading = true;
         state.error = null;
