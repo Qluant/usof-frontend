@@ -59,7 +59,7 @@ export default function ProfilePage() {
     e.preventDefault();
     setEditError(null);
     try {
-      await dispatch(updateUserProfile({ id: profileId, data: { login, full_name: fullName, email } })).unwrap();
+      await dispatch(updateUserProfile({ id: profileId, data: { login, full_name: fullName } })).unwrap();
       setIsEditing(false);
     } catch (err) {
       setEditError(err || 'Failed to update player profile');
@@ -217,15 +217,6 @@ export default function ProfilePage() {
                 type="text"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="form-label">Email Address</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>

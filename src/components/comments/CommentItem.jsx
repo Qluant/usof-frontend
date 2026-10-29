@@ -94,7 +94,7 @@ export default function CommentItem({ comment }) {
   return (
     <div className="comment-card" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', opacity: comment.status === 'inactive' ? 0.7 : 1 }}>
       <div style={{ display: 'flex', gap: '1rem' }}>
-        <VoteButtons score={comment.score} onVote={handleVote} />
+        <VoteButtons score={comment.score} userVote={comment.user_vote} onVote={handleVote} />
 
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem', flexWrap: 'wrap', gap: '0.5rem' }}>

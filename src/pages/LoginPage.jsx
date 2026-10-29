@@ -54,10 +54,10 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">Gamer Tag or Email</label>
+            <label className="form-label">Gamer Tag</label>
             <input
               type="text"
-              placeholder="e.g. shadow_hunter or alex@example.com"
+              placeholder="e.g. shadow_hunter"
               value={login}
               onChange={(e) => setLogin(e.target.value)}
               required
