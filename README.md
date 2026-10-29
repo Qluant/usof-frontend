@@ -25,6 +25,7 @@ Single Page Application (SPA) built with React 18, Vite, and Redux Toolkit for *
 ## Setup
 
 ```bash
+cp .env.example .env
 npm install
 npm run dev
 ```

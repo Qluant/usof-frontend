@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
-export const UPLOADS_BASE_URL = 'http://localhost:3000/uploads';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || `${BACKEND_URL}/api`;
+export const UPLOADS_BASE_URL = import.meta.env.VITE_UPLOADS_URL || `${BACKEND_URL}/uploads`;
 
 const client = axios.create({
   baseURL: API_BASE_URL,
