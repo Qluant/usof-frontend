@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchAdminStats,
   fetchAllUsers,
+  createUserByAdmin,
   deleteUserByAdmin
 } from '../store/slices/adminSlice';
 import {
@@ -38,6 +39,10 @@ export default function AdminDashboardPage() {
   const [editingUser, setEditingUser] = useState(null);
   const [editUserForm, setEditUserForm] = useState({ login: '', full_name: '', email: '', role: 'user' });
   const [editUserError, setEditUserError] = useState(null);
+
+  const [createUserModalOpen, setCreateUserModalOpen] = useState(false);
+  const [createUserForm, setCreateUserForm] = useState({ login: '', full_name: '', email: '', password: '', password_confirmation: '', role: 'user' });
+  const [createUserError, setCreateUserError] = useState(null);
 
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
   const [editingCategory, setEditingCategory] = useState(null);
@@ -106,6 +111,20 @@ export default function AdminDashboardPage() {
       dispatch(fetchAllUsers());
     } catch (err) {
       setEditUserError(err.response?.data?.message || err.message || 'Failed to update player');
+    }
+  };
+
+  const handleCreateUser = async (e) => {
+    e.preventDefault();
+    setCreateUserError(null);
+    try {
+      await dispatch(createUserByAdmin(createUserForm)).unwrap();
+      showNotification('New player account created successfully');
+      setCreateUserModalOpen(false);
+      setCreateUserForm({ login: '', full_name: '', email: '', password: '', password_confirmation: '', role: 'user' });
+      dispatch(fetchAdminStats());
+    } catch (err) {
+      setCreateUserError(typeof err === 'string' ? err : err.message || 'Failed to create player');
     }
   };
 
@@ -320,6 +339,111 @@ export default function AdminDashboardPage() {
               </form>
             </div>
           )}
+
+          {createUserModalOpen && (
+            <div className="card" style={{ marginBottom: 'var(--spacing-lg)' }}>
+              <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Create New Player Account</h3>
+              {createUserError && (
+                <div className="alert alert-error">
+                  <AlertCircle size={18} />
+                  <span>{createUserError}</span>
+                </div>
+              )}
+              <form onSubmit={handleCreateUser}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--spacing-md)' }}>
+                  <div className="form-group">
+                    <label className="form-label">Gamer Tag *</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="e.g. shadow_hunter"
+                      value={createUserForm.login}
+                      onChange={(e) => setCreateUserForm({ ...createUserForm, login: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Full Name</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={createUserForm.full_name}
+                      onChange={(e) => setCreateUserForm({ ...createUserForm, full_name: e.target.value })}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Email *</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      value={createUserForm.email}
+                      onChange={(e) => setCreateUserForm({ ...createUserForm, email: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Role</label>
+                    <select
+                      className="form-control"
+                      value={createUserForm.role}
+                      onChange={(e) => setCreateUserForm({ ...createUserForm, role: e.target.value })}
+                    >
+                      <option value="user">User</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Password *</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      value={createUserForm.password}
+                      onChange={(e) => setCreateUserForm({ ...createUserForm, password: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Confirm Password *</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      value={createUserForm.password_confirmation}
+                      onChange={(e) => setCreateUserForm({ ...createUserForm, password_confirmation: e.target.value })}
+                      required
+                    />
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: 'var(--spacing-sm)', justifyContent: 'flex-end', marginTop: 'var(--spacing-sm)' }}>
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={() => {
+                      setCreateUserModalOpen(false);
+                      setCreateUserForm({ login: '', full_name: '', email: '', password: '', password_confirmation: '', role: 'user' });
+                      setCreateUserError(null);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" className="btn btn-primary">
+                    <Plus size={15} /> Create Player
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 'var(--spacing-md)' }}>
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                setEditUserModalOpen(false);
+                setCreateUserModalOpen((v) => !v);
+              }}
+            >
+              <Plus size={16} /> New Player
+            </button>
+          </div>
 
           <div className="table-responsive">
             <table className="data-table">
