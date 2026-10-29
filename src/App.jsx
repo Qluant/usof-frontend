@@ -10,6 +10,7 @@ import PostDetailPage from './pages/PostDetailPage';
 import CreatePostPage from './pages/CreatePostPage';
 import EditPostPage from './pages/EditPostPage';
 import CategoriesPage from './pages/CategoriesPage';
+import CategoryDetailPage from './pages/CategoryDetailPage';
 import UsersPage from './pages/UsersPage';
 import FavoritesPage from './pages/FavoritesPage';
 import ProfilePage from './pages/ProfilePage';
@@ -68,6 +69,7 @@ export default function App() {
               }
             />
             <Route path="/categories" element={<CategoriesPage />} />
+            <Route path="/categories/:id" element={<CategoryDetailPage />} />
             <Route path="/users" element={<UsersPage />} />
             <Route
               path="/favorites"

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchCategories, createCategory } from '../store/slices/categoriesSlice';
-import { setFilter } from '../store/slices/postsSlice';
-import { Gamepad2, Search, Plus, Flame, AlertCircle } from 'lucide-react';
+import { Gamepad2, Search, Plus, Flame, AlertCircle, ArrowRight } from 'lucide-react';
 
 export default function CategoriesPage() {
   const dispatch = useDispatch();
@@ -22,15 +21,14 @@ export default function CategoriesPage() {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  const filteredCategories = categories.filter(
+  const filteredCategories = (categories || []).filter(
     (cat) =>
       cat.title.toLowerCase().includes(search.toLowerCase()) ||
       (cat.description && cat.description.toLowerCase().includes(search.toLowerCase()))
   );
 
   const handleCategoryClick = (categoryId) => {
-    dispatch(setFilter({ categoryId: String(categoryId) }));
-    navigate('/');
+    navigate(`/categories/${categoryId}`);
   };
 
   const handleCreateCategory = async (e) => {
@@ -48,7 +46,7 @@ export default function CategoriesPage() {
 
   return (
     <div className="categories-page">
-      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
           <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
             <Gamepad2 size={28} color="var(--primary)" /> Games & Genres
@@ -68,7 +66,7 @@ export default function CategoriesPage() {
       </div>
 
       {showAddForm && isAdmin && (
-        <div className="card" style={{ marginBottom: '1.5rem' }}>
+        <div className="card hud-corner" style={{ marginBottom: '1.5rem' }}>
           <h3 style={{ marginBottom: '1rem', color: 'var(--text-white)' }}>Register New Game / Genre</h3>
           {formError && (
             <div className="alert alert-error" style={{ color: 'var(--danger)', marginBottom: '1rem' }}>
@@ -131,7 +129,7 @@ export default function CategoriesPage() {
         </div>
       )}
 
-      {isLoading && categories.length === 0 ? (
+      {isLoading && (!categories || categories.length === 0) ? (
         <div style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--text-muted)' }}>
           Loading game genres...
         </div>
@@ -140,7 +138,7 @@ export default function CategoriesPage() {
           {filteredCategories.map((category) => (
             <div
               key={category.id}
-              className="category-card"
+              className="category-card hud-corner"
               onClick={() => handleCategoryClick(category.id)}
             >
               <div className="category-card-header">
@@ -155,6 +153,22 @@ export default function CategoriesPage() {
               <p className="category-card-description">
                 {category.description || 'No description provided.'}
               </p>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginTop: '0.9rem',
+                  paddingTop: '0.65rem',
+                  borderTop: '1px solid var(--border-color)',
+                  fontSize: '0.8rem',
+                  color: 'var(--primary)',
+                  fontWeight: 600
+                }}
+              >
+                <span>View discussions</span>
+                <ArrowRight size={14} />
+              </div>
             </div>
           ))}
         </div>

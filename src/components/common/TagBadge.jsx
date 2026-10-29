@@ -59,8 +59,9 @@ export default function TagBadge({ id, title }) {
 
   const handleClick = (e) => {
     e.stopPropagation();
-    dispatch(setFilter({ categoryId: String(id) }));
-    navigate('/');
+    if (id) {
+      navigate(`/categories/${id}`);
+    }
   };
 
   const style = getTagStyle(title);
