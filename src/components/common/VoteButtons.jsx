@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 export default function VoteButtons({ score = 0, userVote = null, onVote }) {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const navigate = useNavigate();
-  const [currentScore, setCurrentScore] = useState(Number(score) || 0);
+  const [currentScore, setCurrentScore] = useState(parseInt(score, 10) || 0);
   const [currentVote, setCurrentVote] = useState(userVote);
 
   useEffect(() => {
-    setCurrentScore(Number(score) || 0);
+    setCurrentScore(parseInt(score, 10) || 0);
   }, [score]);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function VoteButtons({ score = 0, userVote = null, onVote }) {
       nextVote = type;
     }
 
-    setCurrentScore((prev) => (Number(prev) || 0) + delta);
+    setCurrentScore((prev) => parseInt(prev, 10) + delta);
     setCurrentVote(nextVote);
 
     if (onVote) {
