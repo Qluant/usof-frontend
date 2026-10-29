@@ -145,6 +145,11 @@ const postsSlice = createSlice({
           state.currentPost = null;
         }
       })
+      .addCase(votePost.fulfilled, (state, action) => {
+        if (state.currentPost && state.currentPost.id === action.payload.id) {
+          state.currentPost.user_vote = action.payload.currentStatus;
+        }
+      })
       .addCase(toggleFavoritePost.fulfilled, (state, action) => {
         if (state.currentPost && state.currentPost.id === action.payload.id) {
           state.currentPost.is_favorite = action.payload.isFavorite;

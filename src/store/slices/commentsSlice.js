@@ -98,6 +98,12 @@ const commentsSlice = createSlice({
       })
       .addCase(deleteComment.fulfilled, (state, action) => {
         state.items = state.items.filter((c) => c.id !== action.payload);
+      })
+      .addCase(voteComment.fulfilled, (state, action) => {
+        const comment = state.items.find((c) => c.id === action.payload.id);
+        if (comment) {
+          comment.user_vote = action.payload.currentStatus;
+        }
       });
   }
 });

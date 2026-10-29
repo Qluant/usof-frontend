@@ -82,16 +82,14 @@ export default function PostDetailPage() {
       <div className="card hud-corner" style={{ marginBottom: '1.5rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '1rem' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', marginBottom: '0.4rem' }}>
+            <h1 style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-white)', letterSpacing: '-0.3px', margin: '0 0 0.4rem 0', lineHeight: 1.25 }}>
               {post.status === 'active' ? (
-                <span className="beacon-dot" title="Active Discussion" style={{ marginTop: '0.65rem', flexShrink: 0 }} />
+                <span className="beacon-dot" title="Active Discussion" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.6rem', position: 'relative', top: '-1px' }} />
               ) : (
-                <span className="badge badge-inactive" style={{ flexShrink: 0 }}>Archived</span>
+                <span className="badge badge-inactive" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.6rem' }}>Archived</span>
               )}
-              <h1 style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-white)', letterSpacing: '-0.3px', margin: 0, lineHeight: 1.25 }}>
-                {post.title}
-              </h1>
-            </div>
+              {post.title}
+            </h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
               <span>Posted on <strong>{formattedDate}</strong></span>
               <span>Status: <strong className={`badge ${post.status === 'active' ? 'badge-active' : 'badge-inactive'}`}>{post.status === 'active' ? 'Active' : 'Archived'}</strong></span>
@@ -144,7 +142,7 @@ export default function PostDetailPage() {
         </div>
 
         <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1rem' }}>
-          <VoteButtons score={post.score} onVote={handleVote} />
+          <VoteButtons score={post.score} userVote={post.user_vote} onVote={handleVote} />
 
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--text-main)', whiteSpace: 'pre-line', marginBottom: '1.5rem' }}>

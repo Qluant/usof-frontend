@@ -35,13 +35,13 @@ export default function PostCard({ post }) {
 
       <div className="post-main-col">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.5rem' }}>
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', width: '100%' }}>
-            {post.status === 'active' ? (
-              <span className="beacon-dot" title="Active Discussion" style={{ marginTop: '0.45rem', flexShrink: 0 }} />
-            ) : (
-              <span className="badge badge-inactive" style={{ flexShrink: 0 }}>Archived</span>
-            )}
+          <div style={{ width: '100%' }}>
             <Link to={`/posts/${post.id}`} className="post-title">
+              {post.status === 'active' ? (
+                <span className="beacon-dot" title="Active Discussion" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem', position: 'relative', top: '-1px' }} />
+              ) : (
+                <span className="badge badge-inactive" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: '0.5rem' }}>Archived</span>
+              )}
               {post.title}
             </Link>
           </div>
