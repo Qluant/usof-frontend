@@ -139,6 +139,16 @@ const postsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        const updated = action.payload;
+        if (state.currentPost && state.currentPost.id === updated.id) {
+          state.currentPost = { ...state.currentPost, ...updated };
+        }
+        const idx = state.items.findIndex((p) => p.id === updated.id);
+        if (idx !== -1) {
+          state.items[idx] = { ...state.items[idx], ...updated };
+        }
+      })
       .addCase(deletePost.fulfilled, (state, action) => {
         state.items = state.items.filter((p) => p.id !== action.payload);
         if (state.currentPost?.id === action.payload) {
