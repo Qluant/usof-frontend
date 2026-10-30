@@ -31,7 +31,7 @@ export default function LoginPage() {
           <div style={{ display: 'inline-flex', padding: '0.4rem', borderRadius: '8px', background: 'var(--primary-light)', marginBottom: '0.75rem' }}>
             <img
               src="/logo.png"
-              alt="USOF"
+              alt="GamerEars"
               style={{ width: '72px', height: '72px', borderRadius: '8px', objectFit: 'contain' }}
               onError={(e) => {
                 e.target.style.display = 'none';

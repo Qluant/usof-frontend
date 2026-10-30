@@ -1,6 +1,6 @@
-# USOF Frontend
+# GamerEars (USOF) Frontend
 
-Single Page Application (SPA) built with React 18, Vite, and Redux Toolkit for **USOF** - a developer and student Q&A discussion forum.
+Single Page Application (SPA) built with React 18, Vite, and Redux Toolkit for **GamerEars** - a gaming community and discussion forum.
 
 ## Features
 

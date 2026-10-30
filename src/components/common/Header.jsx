@@ -50,14 +50,14 @@ export default function Header() {
         <Link to="/" className="logo mobile-hide">
           <img
             src="/logo.png"
-            alt="USOF"
+            alt="GamerEars"
             style={{ width: '72px', height: '72px', borderRadius: '8px', objectFit: 'contain' }}
             onError={(e) => {
               e.target.style.display = 'none';
             }}
           />
           <span style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-white)', lineHeight: 1 }}>
-            USOF
+            GamerEars
           </span>
         </Link>
 
