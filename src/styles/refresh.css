@@ -365,22 +365,24 @@ textarea::placeholder {
 }
 
 .tag-badge {
-  background: #f4e9e8;
-  border: 1px solid #e8d2d2;
-  color: var(--primary);
-  border-radius: 4px;
-  padding: 0.18rem 0.48rem;
-  font-size: 0.74rem;
-  font-weight: 650;
+  background: transparent !important;
+  border: none !important;
+  color: var(--primary) !important;
+  border-radius: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
-  transition: all 0.15s ease;
+  cursor: pointer;
+  transition: color 0.15s ease;
 }
 
 .tag-badge:hover {
-  background: var(--primary);
-  border-color: var(--primary-hover);
-  color: #ffffff;
+  background: transparent !important;
+  border: none !important;
+  color: var(--primary-hover) !important;
+  text-decoration: underline;
 }
 
 .beacon-dot {
