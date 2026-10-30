@@ -1,54 +1,54 @@
 :root {
-  --primary: #9b1d3a;
-  --primary-hover: #b82a4c;
-  --primary-light: rgba(155, 29, 58, 0.18);
-  --secondary: #8a7882;
-  --accent: #d4af37;
-  --accent-hover: #e8c558;
-  --accent-light: rgba(212, 175, 55, 0.16);
-  
-  --success: #10b981;
-  --success-light: rgba(16, 185, 129, 0.16);
-  --danger: #ef4444;
-  --danger-light: rgba(239, 68, 68, 0.16);
-  --warning: #f59e0b;
-  --warning-light: rgba(245, 158, 11, 0.16);
-  
-  --bg-main: #070709;
-  --bg-card: rgba(18, 14, 18, 0.94);
-  --bg-sidebar: rgba(13, 10, 14, 0.96);
-  --bg-input: #151016;
-  --bg-code: #0a070b;
-  
-  --text-main: #f5f0f2;
-  --text-muted: #a3929a;
-  --text-light: #6e5e66;
-  --text-white: #ffffff;
-  
-  --border-color: #2c1a24;
-  --border-hover: #4e2337;
-  --border-focus: #9b1d3a;
-  
-  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.6);
-  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.75);
-  --shadow-lg: 0 16px 32px -6px rgba(0, 0, 0, 0.85);
-  
-  --radius-sm: 3px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
+  --primary: #963b3e;
+  --primary-hover: #7f3033;
+  --primary-light: #f3e8e5;
+  --secondary: #656961;
+  --accent: #aa7b3d;
+  --accent-hover: #92682f;
+  --accent-light: #f5efe4;
+
+  --success: #47745b;
+  --success-light: #e8f0e9;
+  --danger: #a33e3e;
+  --danger-light: #f6e9e7;
+  --warning: #94652c;
+  --warning-light: #f5efe4;
+
+  --bg-main: #f1f0eb;
+  --bg-card: #fbfaf7;
+  --bg-sidebar: #f1f0eb;
+  --bg-input: #fffefa;
+  --bg-code: #eeece6;
+
+  --text-main: #292a27;
+  --text-muted: #686a64;
+  --text-light: #8b8d86;
+  --text-white: #242522;
+
+  --border-color: #dfded6;
+  --border-hover: #c5c2b8;
+  --border-focus: #963b3e;
+
+  --shadow-sm: 0 1px 2px rgba(37, 35, 30,  0.04);
+  --shadow-md: 0 8px 22px rgba(37, 35, 30, 0.07);
+  --shadow-lg: 0 18px 40px rgba(37, 35, 30, 0.11);
+
+  --radius-sm: 4px;
+  --radius-md: 7px;
+  --radius-lg: 10px;
   --radius-full: 9999px;
-  
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --font-heading: 'JetBrains Mono', 'Inter', sans-serif;
-  
-  --header-height: 96px;
-  --sidebar-width: 260px;
-  --max-width: 1400px;
-  
-  --genre-rpg: #d4af37;
-  --genre-fps: #e11d48;
-  --genre-strategy: #10b981;
-  --genre-indie: #ec4899;
-  --genre-hardware: #a855f7;
+
+  --font-sans: Inter, "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
+  --font-heading: var(--font-sans);
+
+  --header-height: 68px;
+  --sidebar-width: 224px;
+  --max-width: 1240px;
+
+  --genre-rpg: #a47b3f;
+  --genre-fps: #963b3e;
+  --genre-strategy: #53745e;
+  --genre-indie: #986b87;
+  --genre-hardware: #6d6f8c;
 }
