@@ -168,9 +168,9 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="admin-page">
-      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          <h1 className="page-title" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
             <ShieldAlert size={28} color="#818cf8" /> Admin Panel
           </h1>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>

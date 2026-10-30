@@ -44,9 +44,9 @@ export default function UsersPage() {
 
   return (
     <div className="users-page">
-      <div className="page-header" style={{ marginBottom: '1.5rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          <h1 className="page-title" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
             <Users size={28} color="var(--primary)" /> All members
           </h1>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>

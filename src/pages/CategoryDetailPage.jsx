@@ -90,7 +90,7 @@ export default function CategoryDetailPage() {
             </div>
 
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.5, margin: '0.5rem 0 1rem 0', maxWidth: '720px' }}>
-              {category?.description || 'No description provided for this gaming category.'}
+              {category?.description || 'No description provided for this category.'}
             </p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontSize: '0.85rem', color: 'var(--text-light)' }}>

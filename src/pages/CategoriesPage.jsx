@@ -46,9 +46,9 @@ export default function CategoriesPage() {
 
   return (
     <div className="categories-page">
-      <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+      <div className="page-header">
         <div>
-          <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          <h1 className="page-title" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
             <Gamepad2 size={28} color="var(--primary)" /> Categories
           </h1>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>
