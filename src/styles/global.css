@@ -167,16 +167,13 @@ code, pre {
   border: 1px solid rgba(239, 68, 68, 0.35);
 }
 
-.badge-admin {
-  background-color: rgba(245, 158, 11, 0.16);
-  color: var(--warning);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-}
-
+.badge-admin,
 .badge-user {
-  background-color: var(--primary-light);
-  color: #fce7eb;
-  border: 1px solid rgba(155, 29, 58, 0.35);
+  background-color: transparent;
+  color: #000000;
+  border: none;
+  font-weight: 600;
+  padding: 0;
 }
 
 @keyframes beacon-pulse {

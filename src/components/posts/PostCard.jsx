@@ -69,24 +69,16 @@ export default function PostCard({ post }) {
               src={avatarSrc}
               alt={post.author_login}
               className="avatar-img"
-              style={{ width: '24px', height: '24px', borderColor: rank.color }}
+              style={{ width: '24px', height: '24px' }}
               onError={(e) => {
-                e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.author_login || 'Player') + '&background=9b1d3a&color=fff';
+                e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.author_login || 'User') + '&background=9b1d3a&color=fff';
               }}
             />
             <Link to={`/profile/${post.author_id}`} style={{ fontWeight: 600, color: 'var(--text-white)' }}>
               {post.author_login}
             </Link>
-            <span
-              className="badge"
-              style={{
-                backgroundColor: rank.border,
-                color: rank.color,
-                fontSize: '0.66rem',
-                padding: '0.1rem 0.4rem'
-              }}
-            >
-              {rank.shortTitle}
+            <span style={{ fontSize: '0.78rem', color: '#000000', fontWeight: 500 }}>
+              • {rank.shortTitle}
             </span>
             <span style={{ color: 'var(--text-light)', fontSize: '0.8rem' }}>posted {formattedDate}</span>
           </div>

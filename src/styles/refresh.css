@@ -50,7 +50,8 @@ textarea::placeholder {
 }
 
 .header {
-  height: var(--header-height);
+  min-height: var(--header-height);
+  height: auto;
   background: rgba(251, 250, 247, 0.96);
   border-bottom: 1px solid var(--border-color);
   box-shadow: none;
@@ -70,8 +71,8 @@ textarea::placeholder {
 }
 
 .logo img {
-  width: 36px !important;
-  height: 36px !important;
+  width: 144px !important;
+  height: 144px !important;
 }
 
 .search-bar {
@@ -462,16 +463,13 @@ textarea::placeholder {
   border-color: #ead8d4;
 }
 
-.badge-user {
-  color: #7c4041;
-  background: #f3e9e6;
-  border-color: #eadbd7;
-}
-
+.badge-user,
 .badge-admin {
-  color: #795b2e;
-  background: #f4efe3;
-  border-color: #e9dec7;
+  color: #000000 !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-weight: 600;
 }
 
 .form-group {

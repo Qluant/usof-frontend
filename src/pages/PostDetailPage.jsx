@@ -162,27 +162,27 @@ export default function PostDetailPage() {
 
               <div
                 className="user-profile-pill"
-                style={{ padding: '0.5rem 0.85rem', borderColor: rank.border }}
+                style={{ padding: '0.5rem 0.85rem' }}
               >
                 <img
                   key={avatarSrc}
                   src={avatarSrc}
                   alt={post.author_login}
                   className="avatar-img"
-                  style={{ width: '36px', height: '36px', borderColor: rank.color }}
+                  style={{ width: '36px', height: '36px' }}
                   onError={(e) => {
                     e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.author_login || 'User') + '&background=9b1d3a&color=fff';
                   }}
                 />
                 <div>
-                  <div style={{ fontSize: '0.7rem', color: rank.color, fontWeight: 700, textTransform: 'uppercase' }}>
+                  <div style={{ fontSize: '0.78rem', color: '#000000', fontWeight: 600 }}>
                     {rank.shortTitle}
                   </div>
                   <Link to={`/profile/${post.author_id}`} style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--text-white)' }}>
                     {post.author_login}
                   </Link>
-                  <span className="xp-badge" style={{ marginLeft: '0.4rem', fontSize: '0.7rem' }}>
-                    <Zap size={10} fill="var(--warning)" /> {post.author_rating ?? 0} XP
+                  <span style={{ marginLeft: '0.4rem', fontSize: '0.78rem', color: '#000000' }}>
+                    • {post.author_rating ?? 0}
                   </span>
                 </div>
               </div>

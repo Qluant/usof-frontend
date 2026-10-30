@@ -50,14 +50,14 @@ export default function Header() {
         <Link to="/" className="logo mobile-hide">
           <img
             src="/logo.png"
-            alt="GamerEars"
-            style={{ width: '120px', height: '120px', borderRadius: '8px', objectFit: 'contain', marginTop: '-6px' }}
+            alt="USOF"
+            style={{ width: '144px', height: '144px', borderRadius: '8px', objectFit: 'contain' }}
             onError={(e) => {
               e.target.style.display = 'none';
             }}
           />
           <span style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-white)', lineHeight: 1 }}>
-            GamerEars
+            USOF
           </span>
         </Link>
 
@@ -83,16 +83,15 @@ export default function Header() {
               <Link
                 to={`/profile/${user?.id}`}
                 className="user-profile-pill"
-                style={{ borderColor: rank.border, position: 'relative', overflow: 'hidden' }}
+                style={{ position: 'relative', overflow: 'hidden' }}
               >
                 <img
                   key={avatarSrc}
                   src={avatarSrc}
                   alt={user?.login}
                   className="avatar-img"
-                  style={{ borderColor: rank.color }}
                   onError={(e) => {
-                    e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user?.login || 'Player') + '&background=9b1d3a&color=fff';
+                    e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user?.login || 'User') + '&background=9b1d3a&color=fff';
                   }}
                 />
                 <div className="header-user-text mobile-hide" style={{ display: 'flex', flexDirection: 'column', minWidth: '70px' }}>
@@ -102,22 +101,17 @@ export default function Header() {
                     </span>
                     <span
                       style={{
-                        fontSize: '0.65rem',
-                        fontWeight: 700,
-                        padding: '0.05rem 0.35rem',
-                        borderRadius: 'var(--radius-sm)',
-                        textTransform: 'uppercase',
-                        backgroundColor: user?.role === 'admin' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(99, 102, 241, 0.2)',
-                        color: user?.role === 'admin' ? '#ef4444' : '#818cf8',
-                        border: '1px solid currentColor',
+                        fontSize: '0.72rem',
+                        fontWeight: 650,
+                        color: '#000000',
                         lineHeight: 1.2
                       }}
                     >
-                      {user?.role}
+                      ({user?.role})
                     </span>
                   </div>
-                  <span style={{ fontSize: '0.68rem', color: rank.color, fontWeight: 700 }}>
-                    {rank.shortTitle} • {user?.rating ?? 0} XP
+                  <span style={{ fontSize: '0.72rem', color: '#000000', fontWeight: 500 }}>
+                    {rank.shortTitle} • {user?.rating ?? 0}
                   </span>
                 </div>
               </Link>

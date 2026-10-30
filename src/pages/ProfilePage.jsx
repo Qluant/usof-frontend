@@ -164,9 +164,8 @@ export default function ProfilePage() {
             <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-white)' }}>
               {selectedUser.full_name || selectedUser.login}
             </h2>
-            <span className={`badge ${selectedUser.role === 'admin' ? 'badge-admin' : 'badge-user'}`}>
-              <Shield size={12} style={{ marginRight: '0.25rem' }} />
-              {selectedUser.role === 'admin' ? 'Admin' : 'User'}
+            <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#000000' }}>
+              ({selectedUser.role === 'admin' ? 'Admin' : 'User'})
             </span>
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1rem' }}>

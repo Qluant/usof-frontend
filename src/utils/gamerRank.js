@@ -7,8 +7,8 @@ export function getGamerRank(xp = 0) {
       shortTitle: 'Master',
       tier: 'diamond',
       level: Math.min(99, Math.floor(points / 20)),
-      color: '#f59e0b',
-      border: 'rgba(245, 158, 11, 0.5)',
+      color: '#000000',
+      border: 'transparent',
       progress: 100
     };
   }
@@ -19,8 +19,8 @@ export function getGamerRank(xp = 0) {
       shortTitle: 'Veteran',
       tier: 'gold',
       level: Math.floor(points / 15),
-      color: '#a78bfa',
-      border: 'rgba(167, 139, 250, 0.45)',
+      color: '#000000',
+      border: 'transparent',
       progress: Math.min(100, Math.round(((points - 50) / 50) * 100))
     };
   }
@@ -31,8 +31,8 @@ export function getGamerRank(xp = 0) {
       shortTitle: 'Contributor',
       tier: 'silver',
       level: Math.floor(points / 10),
-      color: '#38bdf8',
-      border: 'rgba(56, 189, 248, 0.4)',
+      color: '#000000',
+      border: 'transparent',
       progress: Math.min(100, Math.round(((points - 20) / 30) * 100))
     };
   }
@@ -42,8 +42,8 @@ export function getGamerRank(xp = 0) {
     shortTitle: 'Member',
     tier: 'bronze',
     level: Math.max(1, Math.floor(points / 5)),
-    color: '#94a3b8',
-    border: 'rgba(148, 163, 184, 0.3)',
+    color: '#000000',
+    border: 'transparent',
     progress: Math.min(100, Math.round((points / 20) * 100))
   };
 }

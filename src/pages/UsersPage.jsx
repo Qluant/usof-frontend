@@ -166,7 +166,6 @@ export default function UsersPage() {
                   style={{
                     width: '52px',
                     height: '52px',
-                    borderColor: rank.color,
                     flexShrink: 0
                   }}
                   onError={(e) => {
@@ -194,17 +193,13 @@ export default function UsersPage() {
 
                     {member.role === 'admin' && (
                       <span
-                        className="badge"
                         style={{
-                          backgroundColor: 'rgba(239, 68, 68, 0.2)',
-                          color: '#f87171',
-                          borderColor: 'rgba(239, 68, 68, 0.4)',
-                          fontSize: '0.62rem',
-                          padding: '0.1rem 0.35rem'
+                          fontSize: '0.78rem',
+                          fontWeight: 650,
+                          color: '#000000'
                         }}
                       >
-                        <Shield size={10} style={{ display: 'inline', marginRight: '2px' }} />
-                        ADMIN
+                        (Admin)
                       </span>
                     )}
                   </div>
@@ -234,12 +229,10 @@ export default function UsersPage() {
                     }}
                   >
                     <span
-                      className="badge"
                       style={{
-                        backgroundColor: rank.border,
-                        color: rank.color,
-                        fontSize: '0.66rem',
-                        padding: '0.1rem 0.4rem'
+                        fontSize: '0.8rem',
+                        fontWeight: 500,
+                        color: '#000000'
                       }}
                     >
                       {rank.shortTitle}
@@ -254,8 +247,7 @@ export default function UsersPage() {
                         gap: '0.2rem'
                       }}
                     >
-                      <Zap size={12} color="#f59e0b" />
-                      <strong>{member.rating || 0}</strong> XP
+                      • <strong>{member.rating || 0}</strong> rating
                     </span>
                   </div>
                 </div>
