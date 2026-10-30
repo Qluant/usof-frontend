@@ -51,7 +51,7 @@ export default function Header() {
           <img
             src="/logo.png"
             alt="USOF"
-            style={{ width: '144px', height: '144px', borderRadius: '8px', objectFit: 'contain' }}
+            style={{ width: '72px', height: '72px', borderRadius: '8px', objectFit: 'contain' }}
             onError={(e) => {
               e.target.style.display = 'none';
             }}

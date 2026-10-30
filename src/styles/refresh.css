@@ -50,8 +50,7 @@ textarea::placeholder {
 }
 
 .header {
-  min-height: var(--header-height);
-  height: auto;
+  height: var(--header-height);
   background: rgba(251, 250, 247, 0.96);
   border-bottom: 1px solid var(--border-color);
   box-shadow: none;
@@ -71,8 +70,8 @@ textarea::placeholder {
 }
 
 .logo img {
-  width: 144px !important;
-  height: 144px !important;
+  width: 72px !important;
+  height: 72px !important;
 }
 
 .search-bar {

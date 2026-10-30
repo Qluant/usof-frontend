@@ -42,7 +42,7 @@
   --font-mono: "SFMono-Regular", Consolas, monospace;
   --font-heading: var(--font-sans);
 
-  --header-height: 80px;
+  --header-height: 68px;
   --sidebar-width: 224px;
   --max-width: 1240px;
 
