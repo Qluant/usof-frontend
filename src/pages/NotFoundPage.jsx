@@ -77,7 +77,7 @@ export default function NotFoundPage() {
             margin: '0 auto 2rem auto'
           }}
         >
-          The coordinate or topic you are searching for does not exist, has been archived by the guild, or has drifted out of bounds.
+          The coordinate or topic you are searching for does not exist, has been archived by the forum, or has drifted out of bounds.
         </p>
 
         <div

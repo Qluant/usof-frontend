@@ -3,8 +3,8 @@ export function getGamerRank(xp = 0) {
 
   if (points >= 100) {
     return {
-      title: 'Legendary Guildmaster',
-      shortTitle: 'Guildmaster',
+      title: 'Legendary Forum Master',
+      shortTitle: 'Forum Master',
       tier: 'diamond',
       level: Math.min(99, Math.floor(points / 20)),
       color: '#f59e0b',

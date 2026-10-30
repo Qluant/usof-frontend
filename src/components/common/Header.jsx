@@ -36,9 +36,11 @@ export default function Header() {
     navigate('/login');
   };
 
-  const avatarSrc = user?.profile_picture?.startsWith('http')
-    ? user.profile_picture
-    : `${UPLOADS_BASE_URL}/avatars/${user?.profile_picture || 'default-avatar.png'}`;
+  const avatarSrc = user?.profile_picture
+    ? (user.profile_picture.startsWith('http')
+        ? user.profile_picture
+        : `${UPLOADS_BASE_URL}/avatars/${user.profile_picture}`)
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.login || 'Player')}&background=9b1d3a&color=fff`;
 
   const rank = getGamerRank(user?.rating);
 
@@ -84,12 +86,13 @@ export default function Header() {
                 style={{ borderColor: rank.border, position: 'relative', overflow: 'hidden' }}
               >
                 <img
+                  key={avatarSrc}
                   src={avatarSrc}
                   alt={user?.login}
                   className="avatar-img"
                   style={{ borderColor: rank.color }}
                   onError={(e) => {
-                    e.target.src = 'https://ui-avatars.com/api/?name=' + (user?.login || 'Player') + '&background=6366f1&color=fff';
+                    e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user?.login || 'Player') + '&background=9b1d3a&color=fff';
                   }}
                 />
                 <div className="header-user-text mobile-hide" style={{ display: 'flex', flexDirection: 'column', minWidth: '70px' }}>

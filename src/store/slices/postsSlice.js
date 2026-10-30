@@ -164,6 +164,19 @@ const postsSlice = createSlice({
         if (state.currentPost && state.currentPost.id === action.payload.id) {
           state.currentPost.is_favorite = action.payload.isFavorite;
         }
+      })
+      .addCase('users/uploadAvatar/fulfilled', (state, action) => {
+        const updated = action.payload;
+        if (state.items && state.items.length > 0) {
+          state.items = state.items.map((p) =>
+            Number(p.author_id) === Number(updated.id)
+              ? { ...p, author_avatar: updated.profile_picture }
+              : p
+          );
+        }
+        if (state.currentPost && Number(state.currentPost.author_id) === Number(updated.id)) {
+          state.currentPost = { ...state.currentPost, author_avatar: updated.profile_picture };
+        }
       });
   }
 });

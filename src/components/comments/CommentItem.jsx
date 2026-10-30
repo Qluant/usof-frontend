@@ -21,9 +21,13 @@ export default function CommentItem({ comment }) {
   const isAuthor = user?.id === comment.author_id;
   const isAdmin = user?.role === 'admin';
 
-  const avatarSrc = comment.author_avatar?.startsWith('http')
-    ? comment.author_avatar
-    : `${UPLOADS_BASE_URL}/avatars/${comment.author_avatar || 'default-avatar.png'}`;
+  const effectiveAvatar = isAuthor ? (user?.profile_picture || comment.author_avatar) : comment.author_avatar;
+
+  const avatarSrc = effectiveAvatar
+    ? (effectiveAvatar.startsWith('http')
+        ? effectiveAvatar
+        : `${UPLOADS_BASE_URL}/avatars/${effectiveAvatar}`)
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(comment.author_login || 'Player')}&background=9b1d3a&color=fff`;
 
   const formattedDate = new Date(comment.publish_date).toLocaleDateString('en-US', {
     month: 'short',
@@ -100,12 +104,13 @@ export default function CommentItem({ comment }) {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem', flexWrap: 'wrap', gap: '0.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', fontSize: '0.85rem' }}>
               <img
+                key={avatarSrc}
                 src={avatarSrc}
                 alt={comment.author_login}
                 className="avatar-img"
                 style={{ width: '22px', height: '22px' }}
                 onError={(e) => {
-                  e.target.src = 'https://ui-avatars.com/api/?name=' + (comment.author_login || 'Player') + '&background=6366f1&color=fff';
+                  e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(comment.author_login || 'Player') + '&background=9b1d3a&color=fff';
                 }}
               />
               <Link to={`/profile/${comment.author_id}`} style={{ fontWeight: 600, color: 'var(--text-white)' }}>

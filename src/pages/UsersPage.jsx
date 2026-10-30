@@ -9,6 +9,7 @@ import { getGamerRank } from '../utils/gamerRank';
 export default function UsersPage() {
   const dispatch = useDispatch();
   const { users, isLoading, error } = useSelector((state) => state.users);
+  const currentAuthUser = useSelector((state) => state.auth.user);
 
   const [search, setSearch] = useState('');
   const [roleFilter, setRoleFilter] = useState('all');
@@ -49,7 +50,7 @@ export default function UsersPage() {
             <Users size={28} color="var(--primary)" /> All members
           </h1>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-            Browse all registered players, community contributors, and guildmasters
+            Browse all registered players, community contributors, and forum masters
           </p>
         </div>
       </div>
@@ -106,7 +107,7 @@ export default function UsersPage() {
             style={{ padding: '0.45rem 0.75rem', fontSize: '0.85rem' }}
           >
             <option value="all">All Roles</option>
-            <option value="admin">Guildmasters (Admin)</option>
+            <option value="admin">Forum Masters (Admin)</option>
             <option value="user">Players (User)</option>
           </select>
         </div>
@@ -131,9 +132,14 @@ export default function UsersPage() {
           }}
         >
           {filteredUsers.map((member) => {
-            const avatarSrc = member.profile_picture?.startsWith('http')
-              ? member.profile_picture
-              : `${UPLOADS_BASE_URL}/avatars/${member.profile_picture || 'default-avatar.png'}`;
+            const isSelf = currentAuthUser && Number(currentAuthUser.id) === Number(member.id);
+            const effectiveAvatar = isSelf ? (currentAuthUser.profile_picture || member.profile_picture) : member.profile_picture;
+
+            const avatarSrc = effectiveAvatar
+              ? (effectiveAvatar.startsWith('http')
+                  ? effectiveAvatar
+                  : `${UPLOADS_BASE_URL}/avatars/${effectiveAvatar}`)
+              : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.login || 'Player')}&background=9b1d3a&color=fff`;
 
             const rank = getGamerRank(member.rating);
 
@@ -153,6 +159,7 @@ export default function UsersPage() {
                 }}
               >
                 <img
+                  key={avatarSrc}
                   src={avatarSrc}
                   alt={member.login}
                   className="avatar-img"
@@ -165,8 +172,8 @@ export default function UsersPage() {
                   onError={(e) => {
                     e.target.src =
                       'https://ui-avatars.com/api/?name=' +
-                      (member.login || 'Player') +
-                      '&background=6366f1&color=fff';
+                      encodeURIComponent(member.login || 'Player') +
+                      '&background=9b1d3a&color=fff';
                   }}
                 />
 

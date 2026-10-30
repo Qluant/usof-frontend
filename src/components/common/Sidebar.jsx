@@ -93,7 +93,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
                   to="/admin"
                   className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                   style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-                  title="Guildmaster Panel"
+                  title="Forum Admin Panel"
                 >
                   <Shield size={18} color="var(--warning)" />
                 </NavLink>
@@ -171,7 +171,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
                 className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
               >
                 <Shield size={18} color="var(--warning)" />
-                <span>Guildmaster Panel</span>
+                <span>Forum Admin Panel</span>
               </NavLink>
             )}
           </>

@@ -96,8 +96,23 @@ const usersSlice = createSlice({
         state.selectedUser = action.payload;
       })
       .addCase(uploadUserAvatar.fulfilled, (state, action) => {
-        if (state.selectedUser && state.selectedUser.id === action.payload.id) {
-          state.selectedUser.profile_picture = action.payload.profile_picture;
+        const updated = action.payload;
+        if (state.selectedUser && Number(state.selectedUser.id) === Number(updated.id)) {
+          state.selectedUser.profile_picture = updated.profile_picture;
+        }
+        if (state.favorites && state.favorites.length > 0) {
+          state.favorites = state.favorites.map((p) =>
+            Number(p.author_id) === Number(updated.id)
+              ? { ...p, author_avatar: updated.profile_picture }
+              : p
+          );
+        }
+        if (state.users && state.users.length > 0) {
+          state.users = state.users.map((u) =>
+            Number(u.id) === Number(updated.id)
+              ? { ...u, profile_picture: updated.profile_picture }
+              : u
+          );
         }
       })
       .addCase(fetchFavorites.fulfilled, (state, action) => {

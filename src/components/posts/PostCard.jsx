@@ -1,13 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import TagBadge from '../common/TagBadge';
 import { UPLOADS_BASE_URL } from '../../api/client';
 import { getGamerRank } from '../../utils/gamerRank';
 
 export default function PostCard({ post }) {
-  const avatarSrc = post.author_avatar?.startsWith('http')
-    ? post.author_avatar
-    : `${UPLOADS_BASE_URL}/avatars/${post.author_avatar || 'default-avatar.png'}`;
+  const currentAuthUser = useSelector((state) => state.auth.user);
+  const isSelf = currentAuthUser && Number(currentAuthUser.id) === Number(post.author_id);
+  const effectiveAvatar = isSelf ? (currentAuthUser.profile_picture || post.author_avatar) : post.author_avatar;
+
+  const avatarSrc = effectiveAvatar
+    ? (effectiveAvatar.startsWith('http')
+        ? effectiveAvatar
+        : `${UPLOADS_BASE_URL}/avatars/${effectiveAvatar}`)
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author_login || 'Player')}&background=9b1d3a&color=fff`;
 
   const formattedDate = new Date(post.publish_date).toLocaleDateString('en-US', {
     month: 'short',
@@ -58,12 +65,13 @@ export default function PostCard({ post }) {
 
           <div className="author-meta">
             <img
+              key={avatarSrc}
               src={avatarSrc}
               alt={post.author_login}
               className="avatar-img"
               style={{ width: '24px', height: '24px', borderColor: rank.color }}
               onError={(e) => {
-                e.target.src = 'https://ui-avatars.com/api/?name=' + (post.author_login || 'Player') + '&background=6366f1&color=fff';
+                e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.author_login || 'Player') + '&background=9b1d3a&color=fff';
               }}
             />
             <Link to={`/profile/${post.author_id}`} style={{ fontWeight: 600, color: 'var(--text-white)' }}>

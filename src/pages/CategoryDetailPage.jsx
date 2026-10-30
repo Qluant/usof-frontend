@@ -166,7 +166,7 @@ export default function CategoryDetailPage() {
           <Gamepad2 size={44} style={{ color: 'var(--text-light)', margin: '0 auto 1rem auto' }} />
           <h3 style={{ color: 'var(--text-white)' }}>No discussions yet in this genre</h3>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', maxWidth: '440px', margin: '0.5rem auto 1.5rem auto' }}>
-            Be the first guild player to start a discussion, share a build, or ask for tactical advice in #{category?.title}.
+            Be the first forum player to start a discussion, share a build, or ask for tactical advice in #{category?.title}.
           </p>
           {isAuthenticated && (
             <Link to="/posts/new" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>

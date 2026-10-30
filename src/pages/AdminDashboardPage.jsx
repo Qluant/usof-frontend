@@ -208,7 +208,7 @@ export default function AdminDashboardPage() {
           className={`btn ${activeTab === 'overview' ? 'btn-primary' : 'btn-outline'}`}
           onClick={() => setActiveTab('overview')}
         >
-          Guild Stats
+          Forum Stats
         </button>
         <button
           className={`btn ${activeTab === 'users' ? 'btn-primary' : 'btn-outline'}`}
@@ -227,9 +227,6 @@ export default function AdminDashboardPage() {
       {activeTab === 'overview' && (
         <div className="stats-grid">
           <div className="stat-card">
-            <div className="stat-icon" style={{ backgroundColor: 'rgba(99, 102, 241, 0.16)', color: '#818cf8' }}>
-              <Users size={24} />
-            </div>
             <div>
               <div className="stat-value">{stats?.users ?? users.length}</div>
               <div className="stat-label">Total Players</div>
@@ -237,9 +234,6 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="stat-card">
-            <div className="stat-icon" style={{ backgroundColor: 'rgba(16, 185, 129, 0.16)', color: 'var(--accent)' }}>
-              <FileText size={24} />
-            </div>
             <div>
               <div className="stat-value">{stats?.posts ?? 0}</div>
               <div className="stat-label">Discussions & Guides</div>
@@ -247,9 +241,6 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="stat-card">
-            <div className="stat-icon" style={{ backgroundColor: 'rgba(245, 158, 11, 0.16)', color: 'var(--warning)' }}>
-              <MessageSquare size={24} />
-            </div>
             <div>
               <div className="stat-value">{stats?.comments ?? 0}</div>
               <div className="stat-label">Total Responses</div>
@@ -257,9 +248,6 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="stat-card">
-            <div className="stat-icon" style={{ backgroundColor: 'rgba(139, 92, 246, 0.16)', color: '#a78bfa' }}>
-              <FolderTree size={24} />
-            </div>
             <div>
               <div className="stat-value">{stats?.categories ?? categories.length}</div>
               <div className="stat-label">Game Genres</div>
@@ -453,7 +441,7 @@ export default function AdminDashboardPage() {
                   <th>Gamer Tag</th>
                   <th>Full Name</th>
                   <th>Email</th>
-                  <th>Guild Role</th>
+                  <th>Forum Role</th>
                   <th>XP</th>
                   <th>Actions</th>
                 </tr>

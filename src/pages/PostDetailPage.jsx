@@ -41,9 +41,13 @@ export default function PostDetailPage() {
   const isAuthor = user?.id === post.author_id;
   const isAdmin = user?.role === 'admin';
 
-  const avatarSrc = post.author_avatar?.startsWith('http')
-    ? post.author_avatar
-    : `${UPLOADS_BASE_URL}/avatars/${post.author_avatar || 'default-avatar.png'}`;
+  const effectiveAvatar = isAuthor ? (user?.profile_picture || post.author_avatar) : post.author_avatar;
+
+  const avatarSrc = effectiveAvatar
+    ? (effectiveAvatar.startsWith('http')
+        ? effectiveAvatar
+        : `${UPLOADS_BASE_URL}/avatars/${effectiveAvatar}`)
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author_login || 'Player')}&background=9b1d3a&color=fff`;
 
   const formattedDate = new Date(post.publish_date).toLocaleDateString('en-US', {
     month: 'long',
@@ -161,12 +165,13 @@ export default function PostDetailPage() {
                 style={{ padding: '0.5rem 0.85rem', borderColor: rank.border }}
               >
                 <img
+                  key={avatarSrc}
                   src={avatarSrc}
                   alt={post.author_login}
                   className="avatar-img"
                   style={{ width: '36px', height: '36px', borderColor: rank.color }}
                   onError={(e) => {
-                    e.target.src = 'https://ui-avatars.com/api/?name=' + (post.author_login || 'Player') + '&background=9b1d3a&color=fff';
+                    e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.author_login || 'Player') + '&background=9b1d3a&color=fff';
                   }}
                 />
                 <div>
