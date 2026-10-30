@@ -31,7 +31,7 @@ export default function LoginPage() {
           <div style={{ display: 'inline-flex', padding: '0.4rem', borderRadius: '8px', background: 'var(--primary-light)', marginBottom: '0.75rem' }}>
             <img
               src="/logo.png"
-              alt="GamerEars"
+              alt="USOF"
               style={{ width: '72px', height: '72px', borderRadius: '8px', objectFit: 'contain' }}
               onError={(e) => {
                 e.target.style.display = 'none';
@@ -39,10 +39,10 @@ export default function LoginPage() {
             />
           </div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-white)' }}>
-            Sign in to GamerEars
+            Sign In
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginTop: '0.25rem' }}>
-            Enter your player credentials to join the discussion
+            Enter your credentials to continue
           </p>
         </div>
 
@@ -54,10 +54,10 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">Gamer Tag</label>
+            <label className="form-label">Username</label>
             <input
               type="text"
-              placeholder="e.g. shadow_hunter"
+              placeholder="e.g. john_doe"
               value={login}
               onChange={(e) => setLogin(e.target.value)}
               required

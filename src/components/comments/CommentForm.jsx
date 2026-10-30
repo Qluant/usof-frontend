@@ -25,10 +25,10 @@ export default function CommentForm({ postId, isPostActive = true }) {
     return (
       <div className="card" style={{ textAlign: 'center', padding: '1.75rem', marginTop: '1.5rem' }}>
         <p style={{ marginBottom: '0.85rem', color: 'var(--text-muted)' }}>
-          You must be signed in to post an answer or strategy.
+          You must be signed in to post a comment.
         </p>
         <Link to="/login" className="btn btn-primary btn-sm">
-          Sign In to Respond
+          Sign In to Comment
         </Link>
       </div>
     );
@@ -56,7 +56,7 @@ export default function CommentForm({ postId, isPostActive = true }) {
   return (
     <form onSubmit={handleSubmit} className="card" style={{ marginTop: '1.75rem' }}>
       <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.85rem', color: 'var(--text-white)' }}>
-        Your Strategy / Response
+        Leave a Comment
       </h3>
 
       {error && <div className="form-error" style={{ marginBottom: '0.8rem' }}>{error}</div>}
@@ -64,7 +64,7 @@ export default function CommentForm({ postId, isPostActive = true }) {
       <div className="form-group">
         <textarea
           rows={4}
-          placeholder="Share your boss tactics, weapon build suggestions, or game experience..."
+          placeholder="Write your comment or answer here..."
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
@@ -74,7 +74,7 @@ export default function CommentForm({ postId, isPostActive = true }) {
       <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button type="submit" disabled={isSubmitting} className="btn btn-primary">
           <Send size={16} />
-          <span>{isSubmitting ? 'Posting...' : 'Post Response'}</span>
+          <span>{isSubmitting ? 'Posting...' : 'Post Comment'}</span>
         </button>
       </div>
     </form>

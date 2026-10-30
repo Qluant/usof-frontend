@@ -179,7 +179,7 @@ export default function EditPostPage() {
           )}
 
           <div className="form-group">
-            <label className="form-label">Game Genres & Categories</label>
+            <label className="form-label">Categories</label>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {categories.map((cat) => {
                 const isSelected = selectedCategories.includes(cat.id);

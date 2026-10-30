@@ -5,7 +5,7 @@ export default function CommentList({ comments = [] }) {
   if (comments.length === 0) {
     return (
       <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-muted)' }}>
-        No answers or comments yet. Be the first to provide a solution!
+        No comments yet. Be the first to leave a comment!
       </div>
     );
   }

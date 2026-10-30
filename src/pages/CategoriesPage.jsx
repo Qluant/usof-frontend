@@ -49,10 +49,10 @@ export default function CategoriesPage() {
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
         <div>
           <h1 style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <Gamepad2 size={28} color="var(--primary)" /> Games & Genres
+            <Gamepad2 size={28} color="var(--primary)" /> Categories
           </h1>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-            Explore discussions, walkthroughs, and tactics organized by gaming domain
+            Browse posts organized by category
           </p>
         </div>
         {isAdmin && (
@@ -60,14 +60,14 @@ export default function CategoriesPage() {
             className="btn btn-primary"
             onClick={() => setShowAddForm(!showAddForm)}
           >
-            <Plus size={16} /> {showAddForm ? 'Close Form' : 'New Game / Genre'}
+            <Plus size={16} /> {showAddForm ? 'Close Form' : 'New Category'}
           </button>
         )}
       </div>
 
       {showAddForm && isAdmin && (
         <div className="card hud-corner" style={{ marginBottom: '1.5rem' }}>
-          <h3 style={{ marginBottom: '1rem', color: 'var(--text-white)' }}>Register New Game / Genre</h3>
+          <h3 style={{ marginBottom: '1rem', color: 'var(--text-white)' }}>Create New Category</h3>
           {formError && (
             <div className="alert alert-error" style={{ color: 'var(--danger)', marginBottom: '1rem' }}>
               <AlertCircle size={18} />
@@ -76,11 +76,11 @@ export default function CategoriesPage() {
           )}
           <form onSubmit={handleCreateCategory}>
             <div className="form-group">
-              <label className="form-label">Category / Game Title</label>
+              <label className="form-label">Title</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="e.g. Action RPG, Cyberpunk 2077, Speedrunning"
+                placeholder="e.g. JavaScript, Algorithms, Databases"
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
                 required
@@ -91,7 +91,7 @@ export default function CategoriesPage() {
               <textarea
                 className="form-control"
                 rows={3}
-                placeholder="Brief description of games, mechanics, or topics covered"
+                placeholder="Brief description of topics covered in this category"
                 value={newDescription}
                 onChange={(e) => setNewDescription(e.target.value)}
               />
@@ -105,7 +105,7 @@ export default function CategoriesPage() {
                 Cancel
               </button>
               <button type="submit" className="btn btn-primary">
-                Save Game Category
+                Save Category
               </button>
             </div>
           </form>
@@ -117,7 +117,7 @@ export default function CategoriesPage() {
         <input
           type="text"
           style={{ width: '100%', paddingLeft: '2.6rem' }}
-          placeholder="Filter games and genres by name or description..."
+          placeholder="Filter categories by name or description..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -131,7 +131,7 @@ export default function CategoriesPage() {
 
       {isLoading && (!categories || categories.length === 0) ? (
         <div style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--text-muted)' }}>
-          Loading game genres...
+          Loading categories...
         </div>
       ) : filteredCategories.length > 0 ? (
         <div className="categories-grid">

@@ -44,7 +44,7 @@ export default function NotFoundPage() {
 
         <div
           style={{
-            fontSize: '0.8rem',
+            fontSize: '0.85rem',
             fontFamily: 'var(--font-mono)',
             fontWeight: 800,
             letterSpacing: '2px',
@@ -53,7 +53,7 @@ export default function NotFoundPage() {
             marginBottom: '0.5rem'
           }}
         >
-          ERROR 404 :: ZONE UNCHARTED
+          404 Not Found
         </div>
 
         <h1
@@ -77,7 +77,7 @@ export default function NotFoundPage() {
             margin: '0 auto 2rem auto'
           }}
         >
-          The coordinate or topic you are searching for does not exist, has been archived by the forum, or has drifted out of bounds.
+          The page or topic you are looking for does not exist or has been removed.
         </p>
 
         <div
@@ -95,7 +95,7 @@ export default function NotFoundPage() {
 
           <Link to="/categories" className="btn btn-outline" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
             <Gamepad2 size={16} />
-            <span>Games & Genres</span>
+            <span>Categories</span>
           </Link>
 
           <Link to="/users" className="btn btn-outline" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>

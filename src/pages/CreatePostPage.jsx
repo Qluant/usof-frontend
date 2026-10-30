@@ -129,13 +129,13 @@ export default function CreatePostPage() {
       ) : (
         <form onSubmit={handleSubmit} className="card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="form-group">
-            <label className="form-label">Discussion Title</label>
+            <label className="form-label">Title</label>
             <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
-              Be specific about the game, boss, build, or question you want to discuss.
+              Be specific and clear about what you are asking or discussing.
             </p>
             <input
               type="text"
-              placeholder="e.g. Best Bleed/Dexterity build for Shadow of the Erdtree DLC?"
+              placeholder="e.g. How to optimize database queries with indexing?"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
@@ -143,13 +143,13 @@ export default function CreatePostPage() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Details, Strategies or Breakdown</label>
+            <label className="form-label">Content</label>
             <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
-              Include game patch version, platform (PC/PS5/Xbox/Switch), and specific tactics.
+              Provide all necessary details, code snippets, or error messages.
             </p>
             <textarea
               rows={8}
-              placeholder="Describe your current loadout, the boss fight or topic step, and what strategies you tested..."
+              placeholder="Write your post content here..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
               required
@@ -157,9 +157,9 @@ export default function CreatePostPage() {
           </div>
 
           <div className="form-group">
-            <label className="form-label">Game Genres & Tags</label>
+            <label className="form-label">Categories</label>
             <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '0.4rem' }}>
-              Select categories that describe what game genre or topic your post covers.
+              Select categories that best describe your post.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {categories.map((cat) => {

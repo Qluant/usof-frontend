@@ -52,7 +52,7 @@ export default function PostFilter() {
           onChange={(e) => dispatch(setFilter({ categoryId: e.target.value }))}
           style={{ padding: '0.45rem 0.75rem', fontSize: '0.85rem' }}
         >
-          <option value="">All Games & Genres</option>
+          <option value="">All Categories</option>
           {categories.map((cat) => (
             <option key={cat.id} value={cat.id}>
               {cat.title}

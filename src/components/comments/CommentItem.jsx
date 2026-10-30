@@ -27,7 +27,7 @@ export default function CommentItem({ comment }) {
     ? (effectiveAvatar.startsWith('http')
         ? effectiveAvatar
         : `${UPLOADS_BASE_URL}/avatars/${effectiveAvatar}`)
-    : `https://ui-avatars.com/api/?name=${encodeURIComponent(comment.author_login || 'Player')}&background=9b1d3a&color=fff`;
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(comment.author_login || 'User')}&background=9b1d3a&color=fff`;
 
   const formattedDate = new Date(comment.publish_date).toLocaleDateString('en-US', {
     month: 'short',
@@ -40,7 +40,7 @@ export default function CommentItem({ comment }) {
   };
 
   const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete this response?')) {
+    if (window.confirm('Are you sure you want to delete this comment?')) {
       dispatch(deleteComment(comment.id));
     }
   };

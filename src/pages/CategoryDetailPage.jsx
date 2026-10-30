@@ -164,13 +164,13 @@ export default function CategoryDetailPage() {
       ) : (
         <div className="card hud-corner" style={{ textAlign: 'center', padding: '3.5rem' }}>
           <Gamepad2 size={44} style={{ color: 'var(--text-light)', margin: '0 auto 1rem auto' }} />
-          <h3 style={{ color: 'var(--text-white)' }}>No discussions yet in this genre</h3>
+          <h3 style={{ color: 'var(--text-white)' }}>No posts yet in this category</h3>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', maxWidth: '440px', margin: '0.5rem auto 1.5rem auto' }}>
-            Be the first forum player to start a discussion, share a build, or ask for tactical advice in #{category?.title}.
+            Be the first to create a post in #{category?.title}.
           </p>
           {isAuthenticated && (
             <Link to="/posts/new" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              <PlusCircle size={16} /> Start First Discussion
+              <PlusCircle size={16} /> Create First Post
             </Link>
           )}
         </div>

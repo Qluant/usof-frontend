@@ -67,7 +67,7 @@ export default function ProfilePage() {
       await dispatch(updateUserProfile({ id: profileId, data: { login, full_name: fullName } })).unwrap();
       setIsEditing(false);
     } catch (err) {
-      setEditError(err || 'Failed to update player profile');
+      setEditError(err || 'Failed to update profile');
     }
   };
 
@@ -86,18 +86,18 @@ export default function ProfilePage() {
         fetchUserPosts(profileId);
       }
     } catch (err) {
-      setUploadError(err || 'Failed to upload player avatar');
+      setUploadError(err || 'Failed to upload avatar');
     }
   };
 
   if (isLoading && !selectedUser) {
-    return <div style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--text-muted)' }}>Loading player profile...</div>;
+    return <div style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--text-muted)' }}>Loading profile...</div>;
   }
 
   if (!selectedUser) {
     return (
       <div className="card" style={{ color: 'var(--danger)', textAlign: 'center' }}>
-        Player profile not found.
+        User profile not found.
       </div>
     );
   }
@@ -145,7 +145,7 @@ export default function ProfilePage() {
               className="btn btn-primary"
               style={{ position: 'absolute', bottom: 0, right: 0, width: '32px', height: '32px', padding: 0, borderRadius: '50%' }}
               onClick={() => fileInputRef.current?.click()}
-              title="Change player avatar"
+              title="Change avatar"
             >
               <Camera size={16} />
             </button>
@@ -166,7 +166,7 @@ export default function ProfilePage() {
             </h2>
             <span className={`badge ${selectedUser.role === 'admin' ? 'badge-admin' : 'badge-user'}`}>
               <Shield size={12} style={{ marginRight: '0.25rem' }} />
-              {selectedUser.role === 'admin' ? 'Admin' : 'Player'}
+              {selectedUser.role === 'admin' ? 'Admin' : 'User'}
             </span>
           </div>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1rem' }}>
@@ -203,7 +203,7 @@ export default function ProfilePage() {
 
       {isEditing && (
         <div className="card" style={{ marginBottom: '2rem' }}>
-          <h3 style={{ marginBottom: '1.25rem', color: 'var(--text-white)' }}>Edit Player Profile</h3>
+          <h3 style={{ marginBottom: '1.25rem', color: 'var(--text-white)' }}>Edit Profile</h3>
           {editError && (
             <div className="card" style={{ color: 'var(--danger)', marginBottom: '1rem' }}>
               {editError}
@@ -211,7 +211,7 @@ export default function ProfilePage() {
           )}
           <form onSubmit={handleUpdateProfile}>
             <div className="form-group">
-              <label className="form-label">Username / Gamer Tag (Login)</label>
+              <label className="form-label">Username</label>
               <input
                 type="text"
                 value={login}
@@ -220,7 +220,7 @@ export default function ProfilePage() {
               />
             </div>
             <div className="form-group">
-              <label className="form-label">Full Name / Display Name</label>
+              <label className="form-label">Full Name</label>
               <input
                 type="text"
                 value={fullName}

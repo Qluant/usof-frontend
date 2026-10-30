@@ -47,7 +47,7 @@ export default function PostDetailPage() {
     ? (effectiveAvatar.startsWith('http')
         ? effectiveAvatar
         : `${UPLOADS_BASE_URL}/avatars/${effectiveAvatar}`)
-    : `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author_login || 'Player')}&background=9b1d3a&color=fff`;
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author_login || 'User')}&background=9b1d3a&color=fff`;
 
   const formattedDate = new Date(post.publish_date).toLocaleDateString('en-US', {
     month: 'long',
@@ -104,7 +104,7 @@ export default function PostDetailPage() {
             <button
               onClick={handleFavorite}
               className={`btn btn-sm ${post.is_favorite ? 'btn-accent' : 'btn-outline'}`}
-              title="Save to inventory"
+              title="Save post"
             >
               <Bookmark size={16} />
               <span>{post.is_favorite ? 'Saved' : 'Save'}</span>
@@ -171,7 +171,7 @@ export default function PostDetailPage() {
                   className="avatar-img"
                   style={{ width: '36px', height: '36px', borderColor: rank.color }}
                   onError={(e) => {
-                    e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.author_login || 'Player') + '&background=9b1d3a&color=fff';
+                    e.target.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(post.author_login || 'User') + '&background=9b1d3a&color=fff';
                   }}
                 />
                 <div>

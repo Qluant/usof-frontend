@@ -40,7 +40,7 @@ export default function Header() {
     ? (user.profile_picture.startsWith('http')
         ? user.profile_picture
         : `${UPLOADS_BASE_URL}/avatars/${user.profile_picture}`)
-    : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.login || 'Player')}&background=9b1d3a&color=fff`;
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.login || 'User')}&background=9b1d3a&color=fff`;
 
   const rank = getGamerRank(user?.rating);
 
@@ -66,7 +66,7 @@ export default function Header() {
           <input
             ref={searchInputRef}
             type="text"
-            placeholder="Search guides, boss tactics, builds... (Press /)"
+            placeholder="Search posts, topics... (Press /)"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

@@ -14,7 +14,7 @@ export default function PostCard({ post }) {
     ? (effectiveAvatar.startsWith('http')
         ? effectiveAvatar
         : `${UPLOADS_BASE_URL}/avatars/${effectiveAvatar}`)
-    : `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author_login || 'Player')}&background=9b1d3a&color=fff`;
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author_login || 'User')}&background=9b1d3a&color=fff`;
 
   const formattedDate = new Date(post.publish_date).toLocaleDateString('en-US', {
     month: 'short',

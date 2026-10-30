@@ -44,7 +44,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
             to="/"
             className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
             style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-            title="Discussions & Topics"
+            title="Topics"
             end
           >
             <Swords size={18} />
@@ -54,7 +54,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
             to="/categories"
             className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
             style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-            title="Games & Genres"
+            title="Categories"
           >
             <Gamepad2 size={18} />
           </NavLink>
@@ -74,7 +74,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
                 to="/favorites"
                 className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-                title="Saved Topics"
+                title="Saved Posts"
               >
                 <Bookmark size={18} />
               </NavLink>
@@ -83,7 +83,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
                 to={`/profile/${user?.id}`}
                 className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-                title="Player Profile"
+                title="Profile"
               >
                 <User size={18} />
               </NavLink>
@@ -93,7 +93,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
                   to="/admin"
                   className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                   style={{ width: '38px', height: '38px', padding: 0, justifyContent: 'center' }}
-                  title="Forum Admin Panel"
+                  title="Admin Panel"
                 >
                   <Shield size={18} color="var(--warning)" />
                 </NavLink>
@@ -109,7 +109,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
     <aside className="sidebar">
       <div className="sidebar-collapse-header">
         <span style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: 'var(--text-light)', fontFamily: 'var(--font-mono)' }}>
-          HUD TACTICS
+          NAVIGATION
         </span>
         <button
           onClick={onToggle}
@@ -128,7 +128,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
           end
         >
           <Swords size={18} />
-          <span>Discussions & Topics</span>
+          <span>Topics</span>
         </NavLink>
 
         <NavLink
@@ -136,7 +136,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
           className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
         >
           <Gamepad2 size={18} />
-          <span>Games & Genres</span>
+          <span>Categories</span>
         </NavLink>
 
         <NavLink
@@ -154,7 +154,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
               className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
             >
               <Bookmark size={18} />
-              <span>Saved Topics</span>
+              <span>Saved Posts</span>
             </NavLink>
 
             <NavLink
@@ -162,7 +162,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
               className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
             >
               <User size={18} />
-              <span>Player Profile</span>
+              <span>Profile</span>
             </NavLink>
 
             {user?.role === 'admin' && (
@@ -171,7 +171,7 @@ export default function Sidebar({ isCollapsed, onToggle }) {
                 className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
               >
                 <Shield size={18} color="var(--warning)" />
-                <span>Forum Admin Panel</span>
+                <span>Admin Panel</span>
               </NavLink>
             )}
           </>

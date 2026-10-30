@@ -3,8 +3,8 @@ export function getGamerRank(xp = 0) {
 
   if (points >= 100) {
     return {
-      title: 'Legendary Forum Master',
-      shortTitle: 'Forum Master',
+      title: 'Master',
+      shortTitle: 'Master',
       tier: 'diamond',
       level: Math.min(99, Math.floor(points / 20)),
       color: '#f59e0b',
@@ -15,7 +15,7 @@ export function getGamerRank(xp = 0) {
 
   if (points >= 50) {
     return {
-      title: 'Raid Veteran',
+      title: 'Veteran',
       shortTitle: 'Veteran',
       tier: 'gold',
       level: Math.floor(points / 15),
@@ -27,8 +27,8 @@ export function getGamerRank(xp = 0) {
 
   if (points >= 20) {
     return {
-      title: 'Dungeon Crawler',
-      shortTitle: 'Crawler',
+      title: 'Contributor',
+      shortTitle: 'Contributor',
       tier: 'silver',
       level: Math.floor(points / 10),
       color: '#38bdf8',
@@ -38,8 +38,8 @@ export function getGamerRank(xp = 0) {
   }
 
   return {
-    title: 'Novice Scout',
-    shortTitle: 'Scout',
+    title: 'Member',
+    shortTitle: 'Member',
     tier: 'bronze',
     level: Math.max(1, Math.floor(points / 5)),
     color: '#94a3b8',

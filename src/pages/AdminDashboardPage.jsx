@@ -105,12 +105,12 @@ export default function AdminDashboardPage() {
     setEditUserError(null);
     try {
       await usersApi.update(editingUser.id, editUserForm);
-      showNotification('Player data updated successfully');
+      showNotification('User updated successfully');
       setEditUserModalOpen(false);
       setEditingUser(null);
       dispatch(fetchAllUsers());
     } catch (err) {
-      setEditUserError(err.response?.data?.message || err.message || 'Failed to update player');
+      setEditUserError(err.response?.data?.message || err.message || 'Failed to update user');
     }
   };
 
@@ -119,12 +119,12 @@ export default function AdminDashboardPage() {
     setCreateUserError(null);
     try {
       await dispatch(createUserByAdmin(createUserForm)).unwrap();
-      showNotification('New player account created successfully');
+      showNotification('User created successfully');
       setCreateUserModalOpen(false);
       setCreateUserForm({ login: '', full_name: '', email: '', password: '', password_confirmation: '', role: 'user' });
       dispatch(fetchAdminStats());
     } catch (err) {
-      setCreateUserError(typeof err === 'string' ? err : err.message || 'Failed to create player');
+      setCreateUserError(typeof err === 'string' ? err : err.message || 'Failed to create user');
     }
   };
 
@@ -208,19 +208,19 @@ export default function AdminDashboardPage() {
           className={`btn ${activeTab === 'overview' ? 'btn-primary' : 'btn-outline'}`}
           onClick={() => setActiveTab('overview')}
         >
-          Forum Stats
+          Stats
         </button>
         <button
           className={`btn ${activeTab === 'users' ? 'btn-primary' : 'btn-outline'}`}
           onClick={() => setActiveTab('users')}
         >
-          Players ({users.length})
+          Users ({users.length})
         </button>
         <button
           className={`btn ${activeTab === 'categories' ? 'btn-primary' : 'btn-outline'}`}
           onClick={() => setActiveTab('categories')}
         >
-          Game Genres ({categories.length})
+          Categories ({categories.length})
         </button>
       </div>
 
@@ -229,28 +229,28 @@ export default function AdminDashboardPage() {
           <div className="stat-card">
             <div>
               <div className="stat-value">{stats?.users ?? users.length}</div>
-              <div className="stat-label">Total Players</div>
+              <div className="stat-label">Total Users</div>
             </div>
           </div>
 
           <div className="stat-card">
             <div>
               <div className="stat-value">{stats?.posts ?? 0}</div>
-              <div className="stat-label">Discussions & Guides</div>
+              <div className="stat-label">Posts</div>
             </div>
           </div>
 
           <div className="stat-card">
             <div>
               <div className="stat-value">{stats?.comments ?? 0}</div>
-              <div className="stat-label">Total Responses</div>
+              <div className="stat-label">Comments</div>
             </div>
           </div>
 
           <div className="stat-card">
             <div>
               <div className="stat-value">{stats?.categories ?? categories.length}</div>
-              <div className="stat-label">Game Genres</div>
+              <div className="stat-label">Categories</div>
             </div>
           </div>
         </div>
@@ -261,7 +261,7 @@ export default function AdminDashboardPage() {
 
           {editUserModalOpen && (
             <div className="card" style={{ marginBottom: 'var(--spacing-lg)' }}>
-              <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Edit Player: {editingUser?.login}</h3>
+              <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Edit User: {editingUser?.login}</h3>
               {editUserError && (
                 <div className="alert alert-error">
                   <AlertCircle size={18} />
@@ -330,7 +330,7 @@ export default function AdminDashboardPage() {
 
           {createUserModalOpen && (
             <div className="card" style={{ marginBottom: 'var(--spacing-lg)' }}>
-              <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Create New Player Account</h3>
+              <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Create New User</h3>
               {createUserError && (
                 <div className="alert alert-error">
                   <AlertCircle size={18} />
@@ -340,11 +340,11 @@ export default function AdminDashboardPage() {
               <form onSubmit={handleCreateUser}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--spacing-md)' }}>
                   <div className="form-group">
-                    <label className="form-label">Gamer Tag *</label>
+                    <label className="form-label">Username *</label>
                     <input
                       type="text"
                       className="form-control"
-                      placeholder="e.g. shadow_hunter"
+                      placeholder="e.g. john_doe"
                       value={createUserForm.login}
                       onChange={(e) => setCreateUserForm({ ...createUserForm, login: e.target.value })}
                       required
@@ -414,7 +414,7 @@ export default function AdminDashboardPage() {
                     Cancel
                   </button>
                   <button type="submit" className="btn btn-primary">
-                    <Plus size={15} /> Create Player
+                    <Plus size={15} /> Create User
                   </button>
                 </div>
               </form>
@@ -429,7 +429,7 @@ export default function AdminDashboardPage() {
                 setCreateUserModalOpen((v) => !v);
               }}
             >
-              <Plus size={16} /> New Player
+              <Plus size={16} /> New User
             </button>
           </div>
 
@@ -438,11 +438,11 @@ export default function AdminDashboardPage() {
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Gamer Tag</th>
+                  <th>Username</th>
                   <th>Full Name</th>
                   <th>Email</th>
-                  <th>Forum Role</th>
-                  <th>XP</th>
+                  <th>Role</th>
+                  <th>Rating</th>
                   <th>Actions</th>
                 </tr>
               </thead>

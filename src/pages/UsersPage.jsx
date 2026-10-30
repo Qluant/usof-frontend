@@ -50,7 +50,7 @@ export default function UsersPage() {
             <Users size={28} color="var(--primary)" /> All members
           </h1>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-            Browse all registered players, community contributors, and forum masters
+            Browse all registered members and contributors
           </p>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default function UsersPage() {
           <input
             type="text"
             style={{ width: '100%', paddingLeft: '2.6rem' }}
-            placeholder="Search by gamer tag or name..."
+            placeholder="Search by username or name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -94,8 +94,8 @@ export default function UsersPage() {
               className="table-select"
               style={{ padding: '0.45rem 0.75rem', fontSize: '0.85rem' }}
             >
-              <option value="rating">Top XP / Rating</option>
-              <option value="login">Gamer Tag (A-Z)</option>
+              <option value="rating">Highest Rating</option>
+              <option value="login">Username (A-Z)</option>
               <option value="newest">Newest Members</option>
             </select>
           </div>
@@ -107,8 +107,8 @@ export default function UsersPage() {
             style={{ padding: '0.45rem 0.75rem', fontSize: '0.85rem' }}
           >
             <option value="all">All Roles</option>
-            <option value="admin">Forum Masters (Admin)</option>
-            <option value="user">Players (User)</option>
+            <option value="admin">Administrators</option>
+            <option value="user">Users</option>
           </select>
         </div>
       </div>
@@ -139,7 +139,7 @@ export default function UsersPage() {
               ? (effectiveAvatar.startsWith('http')
                   ? effectiveAvatar
                   : `${UPLOADS_BASE_URL}/avatars/${effectiveAvatar}`)
-              : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.login || 'Player')}&background=9b1d3a&color=fff`;
+              : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.login || 'User')}&background=9b1d3a&color=fff`;
 
             const rank = getGamerRank(member.rating);
 
@@ -172,7 +172,7 @@ export default function UsersPage() {
                   onError={(e) => {
                     e.target.src =
                       'https://ui-avatars.com/api/?name=' +
-                      encodeURIComponent(member.login || 'Player') +
+                      encodeURIComponent(member.login || 'User') +
                       '&background=9b1d3a&color=fff';
                   }}
                 />

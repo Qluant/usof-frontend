@@ -78,7 +78,7 @@ export default function HomePage() {
         <div className="card" style={{ textAlign: 'center', padding: '3.5rem' }}>
           <h3>No discussions found</h3>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-            Try adjusting your search filters or be the first to start a new gaming thread.
+            Try adjusting your search filters or be the first to start a new discussion.
           </p>
         </div>
       ) : (

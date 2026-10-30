@@ -65,7 +65,7 @@ export default function RegisterPage() {
           <div style={{ display: 'inline-flex', padding: '0.4rem', borderRadius: '8px', background: 'var(--primary-light)', marginBottom: '0.75rem' }}>
             <img
               src="/logo.png"
-              alt="GamerEars"
+              alt="USOF"
               style={{ width: '72px', height: '72px', borderRadius: '8px', objectFit: 'contain' }}
               onError={(e) => {
                 e.target.style.display = 'none';
@@ -73,10 +73,10 @@ export default function RegisterPage() {
             />
           </div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-white)' }}>
-            Join the GamerEars Community
+            Create an Account
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginTop: '0.25rem' }}>
-            Create your player profile and exchange strategies
+            Join the community to ask questions and share knowledge
           </p>
         </div>
 
@@ -88,10 +88,10 @@ export default function RegisterPage() {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label">Gamer Tag (Username)</label>
+            <label className="form-label">Username</label>
             <input
               type="text"
-              placeholder="e.g. shadow_hunter"
+              placeholder="e.g. john_doe"
               value={login}
               onChange={(e) => setLogin(e.target.value)}
               required
@@ -102,7 +102,7 @@ export default function RegisterPage() {
             <label className="form-label">Email Address</label>
             <input
               type="email"
-              placeholder="player@example.com"
+              placeholder="user@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -133,12 +133,12 @@ export default function RegisterPage() {
 
           <button type="submit" disabled={isLoading} className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem' }}>
             <UserPlus size={16} />
-            <span>{isLoading ? 'Registering Player...' : 'Create Player Profile'}</span>
+            <span>{isLoading ? 'Creating Account...' : 'Register'}</span>
           </button>
         </form>
 
         <p style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-          Already have a player account? <Link to="/login" style={{ color: '#818cf8', fontWeight: 600 }}>Sign In</Link>
+          Already have an account? <Link to="/login" style={{ color: '#818cf8', fontWeight: 600 }}>Sign In</Link>
         </p>
       </div>
     </div>

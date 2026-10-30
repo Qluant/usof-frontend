@@ -17,10 +17,10 @@ export default function FavoritesPage() {
       <div className="page-header" style={{ marginBottom: '1.5rem' }}>
         <div>
           <h1 className="page-title" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <Bookmark size={26} color="#818cf8" /> Saved Topics & Guides
+            <Bookmark size={26} color="#818cf8" /> Saved Posts
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.25rem' }}>
-            Discussions and boss strategies you have bookmarked for quick access
+            Posts you have bookmarked for quick access
           </p>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function FavoritesPage() {
 
       {isLoading && favorites.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '3.5rem', color: 'var(--text-muted)' }}>
-          Loading saved topics...
+          Loading saved posts...
         </div>
       ) : favorites.length > 0 ? (
         <div>
@@ -44,9 +44,9 @@ export default function FavoritesPage() {
       ) : (
         <div className="card" style={{ textAlign: 'center', padding: '3.5rem' }}>
           <Bookmark size={48} style={{ color: 'var(--text-light)', margin: '0 auto 1rem' }} />
-          <h3 style={{ color: 'var(--text-white)' }}>No saved topics yet</h3>
+          <h3 style={{ color: 'var(--text-white)' }}>No saved posts yet</h3>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-            Click the bookmark icon on any discussion or build guide to save it to your inventory.
+            Click the bookmark icon on any post to save it for later.
           </p>
         </div>
       )}
